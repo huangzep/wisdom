@@ -10,7 +10,7 @@
     <div class="login">
         <div class="login-wrap">
             <div class="avatar">
-                <img src="./uploads/monkey.png" class="img-circle" alt="">
+                <img src="/views/public/uploads/monkey.png" class="img-circle" alt="">
             </div>
             <form action="" id="formList" class="col-md-offset-1 col-md-10">
                 <div class="input-group input-group-lg">
@@ -39,6 +39,7 @@
                 type: 'post',
                 data: data,
                 success(res) {
+                    $.cookie('tcInfo', JSON.stringify(res.result))
                     window.location.href = '/'
                 },
                 error(err) {

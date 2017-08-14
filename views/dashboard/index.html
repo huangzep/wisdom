@@ -12,10 +12,7 @@
         <!-- 个人资料 -->
         <div class="profile">
             <!-- 头像 -->
-            <div class="avatar img-circle">
-                <img src="/views/public/uploads/avatar.jpg">
-            </div>
-            <h4>布头儿</h4>
+            
         </div>
         <!-- 导航菜单 -->
         <div class="navs">
@@ -175,6 +172,12 @@
     </div>
     
     <?php include "/views/common/js.html" ?>
+    <script type="template/text" id="tpl_info">
+        <div class="avatar img-circle">
+            <img src="{{tc_avatar}}">
+        </div>
+        <h4>{{tc_name}}</h4>
+    </script>
     <script>
 
         // 基于准备好的dom，初始化echarts实例
@@ -203,6 +206,10 @@
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
 
+    </script>
+    <script>
+        var profile = template('tpl_info', JSON.parse($.cookie().tcInfo))
+        $('.aside .profile').html(profile)
     </script>
 </body>
 </html>
