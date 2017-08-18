@@ -9,6 +9,8 @@ define(['jquery', 'template', 'bootstrap'], function ($, template) {
 			}
 		}
 	})
+
+	//模态框
 	$('#tc_list_tBody').on('click','a.btn-info',function (){
 	     var id = $(this).parent().attr('data-id');
 	      $.ajax({
@@ -25,17 +27,19 @@ define(['jquery', 'template', 'bootstrap'], function ($, template) {
 	        }
 	      })
 	})
+
+	//启用注销
 	$('#tc_list_tBody').on('click', 'a.btn-warning', function () {
 		var _this = $(this)
 		$.ajax({
 			url: '/api/teacher/handle',
 			type: 'get',
 			data: {
-				tc_id:$(this).parent().attr('data-id'),
-				tc_status:$(this).attr('data-status')
+				tc_id:$(this).parent().data('id'),
+				tc_status:$(this).data('status')
 			},
 			success(res) {
-				_this.attr('data-status',res.result.tc_status);
+				_this.data('status',res.result.tc_status);
 				if (res.result.tc_status==1) {
 					_this.text('启 用')
 				} else {
