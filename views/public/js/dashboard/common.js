@@ -13,7 +13,7 @@
 	// }
 
 
-define(['jquery', 'cookie', 'template'], function ($, cookie, template) {
+define(['jquery', 'cookie', 'template', 'nprogress'], function ($, cookie, template, nprogress) {
 	if (!$.cookie('PHPSESSID') && location.pathname != '/login') {
 		location.href = '/login'
 	}
@@ -34,5 +34,12 @@ define(['jquery', 'cookie', 'template'], function ($, cookie, template) {
 	})
 	$(".navs a+ul").prev().on("click", function () {
 		$(this).next().slideToggle()
+	})
+
+	$(document).ajaxStart(() => {
+		nprogress.start()
+	})
+	$(document).ajaxStop(() => {
+		nprogress.done()
 	})
 })

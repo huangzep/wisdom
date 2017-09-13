@@ -13,6 +13,7 @@ require.config({
 	      'template':'assets/artTemplate/template',
 	      'ckeditor': 'assets/ckeditor/ckeditor',
 	      'form': 'assets/jquery-form/jquery.form',
+	      'jcrop': 'assets/Jcrop/js/jcrop',
 	      'common': 'js/dashboard/common',
 	      'login': 'js/dashboard/login',
 	      'utils': 'libs/utils'
@@ -29,6 +30,9 @@ require.config({
 		},
 		'ckeditor': {
 			exports: 'CKEDITOR'
+		},
+		'jcrop': {
+			deps: ['jquery']
 		}
 	}
 })
